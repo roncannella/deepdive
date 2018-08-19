@@ -1,4 +1,4 @@
-# DaBeaz's Pythons Deepdive
+# DaBeaz's Python Deepdive
 
 ## Introduction
-Working through Daves deepdive recording... again
+Working through Dave's deepdive recording... again
