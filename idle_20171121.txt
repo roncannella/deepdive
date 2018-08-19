@@ -1,0 +1,599 @@
+Python 3.6.0 (v3.6.0:41df79263a11, Dec 23 2016, 08:06:12) [MSC v.1900 64 bit (AMD64)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> a = 'hello world'
+>>> b = a
+>>> id(a)
+1866435412720
+>>> id(b)
+1866435412720
+>>> c = [1,2,3]
+>>> d = c
+>>> d
+[1, 2, 3]
+>>> d.append(9999)
+>>> d
+[1, 2, 3, 9999]
+>>> c
+[1, 2, 3, 9999]
+>>> a = 'hello world'
+>>> b = 'hello world'
+>>> id(a)
+1866435478768
+>>> id(b)
+1866435895856
+>>> a is b
+False
+>>> cache = { }
+>>> cache[a] = a
+>>> cache
+{'hello world': 'hello world'}
+>>> b
+'hello world'
+>>> id(a)
+1866435478768
+>>> id(b)
+1866435895856
+>>> b = cache[b]
+>>> b
+'hello world'
+>>> id(b)
+1866435478768
+>>> id(a)
+1866435478768
+>>> id(b)
+1866435478768
+>>> d = { }
+>>> d.setdefault('x', 'x')
+'x'
+>>> d
+{'x': 'x'}
+>>> 
+====== RESTART: C:\Users\dave\Desktop\DataDeepDive\buscode.py ======
+Pause: look at memory
+Total: 185
+24154
+Most popular routes in 2016
+79 8268367
+66 7088030
+77 6671135
+4 6424587
+8 6375504
+9 6329587
+53 5895532
+82 5775101
+3 5698439
+22 5620134
+Greatest increase 2001-2016
+J14 3296029
+15 2301408
+X9 2075111
+146 1516226
+147 1315199
+115 1114940
+12 1001598
+26 920307
+134 722110
+18 684923
+>>> a = 73
+>>> b = 73
+>>> a is b
+True
+>>> id(a)
+1392749920
+>>> id(b)
+1392749920
+>>> c = 'hello'
+>>> d = 'hello'
+>>> id(c)
+2171018046184
+>>> id(d)
+2171018046184
+>>> import sys
+>>> sys.intern('hello world')
+'hello world'
+>>> c = sys.intern('hello world')
+>>> d = sys.intern('hello world')
+>>> id(c)
+2171091190320
+>>> id(d)
+2171091190320
+>>> # How dictionaries work
+>>> d = { 'route': '22', 'date': '01/01/2001', 'daytype': 'U', 'rides': 12345 }
+>>> entries = [ None ] * 8
+>>> entries
+[None, None, None, None, None, None, None, None]
+>>> 'route'.__hash__()
+-7418148954346439983
+>>> 'route'.__hash__() % len(entries)
+1
+>>> entries[1] = ('route', '22')
+>>> entries
+[None, ('route', '22'), None, None, None, None, None, None]
+>>> 'date'.__hash__() % len(entries)
+2
+>>> entries[2] = ('date', '01/01/2001')
+>>> 'daytype'.__hash__() % len(entries)
+2
+>>> entries[2]
+('date', '01/01/2001')
+>>> entries
+[None, ('route', '22'), ('date', '01/01/2001'), None, None, None, None, None]
+>>> 'daytype'.__hash__()
+-7336238433013629286
+>>> _ >> 5
+-229257451031675916
+>>> _ % len(entries)
+4
+>>> entries[4] = ('daytype', 'U')
+>>> 'rides'.__hash__() % len(entries)
+5
+>>> entries[5] = ('rides', 12345)
+>>> entries
+[None, ('route', '22'), ('date', '01/01/2001'), None, ('daytype', 'U'), ('rides', 12345), None, None]
+>>> d
+{'route': '22', 'date': '01/01/2001', 'daytype': 'U', 'rides': 12345}
+>>> import sys
+>>> sys.getsizeof(d)
+240
+>>> d['spam'] = 42
+>>> d
+{'route': '22', 'date': '01/01/2001', 'daytype': 'U', 'rides': 12345, 'spam': 42}
+>>> sys.getsizeof(d)
+240
+>>> d['blah'] = 40
+>>> d
+{'route': '22', 'date': '01/01/2001', 'daytype': 'U', 'rides': 12345, 'spam': 42, 'blah': 40}
+>>> sys.getsizeof(d)
+368
+>>> 
+====== RESTART: C:\Users\dave\Desktop\DataDeepDive\buscode.py ======
+Pause: look at memory
+====== RESTART: C:\Users\dave\Desktop\DataDeepDive\buscode.py ======
+Pause: look at memory
+Traceback (most recent call last):
+  File "C:\Users\dave\Desktop\DataDeepDive\buscode.py", line 80, in <module>
+    routes.add(row.route)
+AttributeError: 'dict' object has no attribute 'route'
+>>> 
+>>> d = { }
+>>> import sys
+>>> sys.getsizeof(d)
+240
+>>> for i in range(1000000):
+	d[i] = None
+
+	
+>>> len(d)
+1000000
+>>> sys.getsizeof(d)
+41943144
+>>> for i in range(1000000):
+	del d[i]
+
+	
+>>> len(d)
+0
+>>> d
+{}
+>>> sys.getsizeof(d)
+41943144
+>>> d['a'] = 23
+>>> d['b']
+Traceback (most recent call last):
+  File "<pyshell#89>", line 1, in <module>
+    d['b']
+KeyError: 'b'
+>>> d['b'] = 42
+>>> sys.getsizeof(d)
+41943144
+>>> d
+{'a': 23, 'b': 42}
+>>> sys.getsizeof(d)
+41943144
+>>> d.clear()
+>>> sys.getsizeof(d)
+72
+>>> d['a'] = 23
+>>> sys.getsizeof(d)
+240
+>>> del d
+>>> len(rows)
+736461
+>>> rows[0]
+{'route': '3', 'date': '01/01/2001', 'daytype': 'U', 'rides': 7354, 'spam': None, 'blah': None}
+>>> busy = [ row for row in rows if row['route'] == '22' and row['rides'] > 25000 ]
+>>> len(busy)
+63
+>>> busy[0]
+{'route': '22', 'date': '03/06/2008', 'daytype': 'W', 'rides': 25419, 'spam': None, 'blah': None}
+>>> busy[1]
+{'route': '22', 'date': '03/13/2008', 'daytype': 'W', 'rides': 25238, 'spam': None, 'blah': None}
+>>> sum([row['rides'] for row in rows if row['route'] == '22'])
+111886681
+>>> 
+====== RESTART: C:\Users\dave\Desktop\DataDeepDive\buscode.py ======
+Pause: look at memory
+Total: 185
+24154
+Most popular routes in 2016
+79 8268367
+66 7088030
+77 6671135
+4 6424587
+8 6375504
+9 6329587
+53 5895532
+82 5775101
+3 5698439
+22 5620134
+Greatest increase 2001-2016
+J14 3296029
+15 2301408
+X9 2075111
+146 1516226
+147 1315199
+115 1114940
+12 1001598
+26 920307
+134 722110
+18 684923
+>>> # Find out what day route 22 had highest ridership
+>>> rt22 = [ row for row in rows if row.route == '22' ]
+>>> len(rt22)
+5995
+>>> max(rt22, key=lambda row: row.rides)
+<__main__.Row object at 0x000002AFE70FA510>
+>>> r = _
+>>> r.date
+'06/11/2008'
+>>> r.rides
+26896
+>>> max([(row.rides, row.date) for row in rt22])
+(26896, '06/11/2008')
+>>> from functools import reduce
+>>> data = [1,4,5,19,20]
+>>> def f(x, y):
+	return x + y
+
+>>> reduce(f, data)
+49
+>>> def f(x, y):
+	print(x,  y)
+	return x + y
+
+>>> reduce(f, data)
+1 4
+5 5
+10 19
+29 20
+49
+>>> reduce(lambda x, y: x+y, data)
+49
+>>> def f(x, y):
+	return (x, y)   # Tuple
+
+>>> reduce(f, data)
+((((1, 4), 5), 19), 20)
+>>> (1, (4, (5, (19, 20))))
+(1, (4, (5, (19, 20))))
+>>> 
+====== RESTART: C:\Users\dave\Desktop\DataDeepDive\buscode.py ======
+Pause: look at memory
+====== RESTART: C:\Users\dave\Desktop\DataDeepDive\buscode.py ======
+Pause: look at memory
+Traceback (most recent call last):
+  File "C:\Users\dave\Desktop\DataDeepDive\buscode.py", line 104, in <module>
+    # Set comprehension
+NameError: name 'rows' is not defined
+>>> len(columns)
+4
+>>> columns[0][0:10]
+['3', '4', '6', '8', '9', '10', '11', '12', '18', '20']
+>>> columns[1][0:10]
+['01/01/2001', '01/01/2001', '01/01/2001', '01/01/2001', '01/01/2001', '01/01/2001', '01/01/2001', '01/01/2001', '01/01/2001', '01/01/2001']
+>>> columns[2][0:10]
+['U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'U', 'U']
+>>> columns[3][0:10]
+[7354, 9288, 6048, 6309, 11207, 385, 610, 3678, 375, 7096]
+>>> rows = zip(*columns)
+>>> rows
+<zip object at 0x0000025DE4354308>
+>>> next(rows)
+('3', '01/01/2001', 'U', 7354)
+>>> next(rows)
+('4', '01/01/2001', 'U', 9288)
+>>> import numpy
+a 
+>>> 
+>>> a = numpy.array([1,2,3,4,5,6,7])
+>>> a
+array([1, 2, 3, 4, 5, 6, 7])
+>>> a + 10
+array([11, 12, 13, 14, 15, 16, 17])
+>>> a * 0.5
+array([ 0.5,  1. ,  1.5,  2. ,  2.5,  3. ,  3.5])
+>>> numpy.sqrt(a)
+array([ 1.        ,  1.41421356,  1.73205081,  2.        ,  2.23606798,
+        2.44948974,  2.64575131])
+>>> b = numpy.arange(0, 10, 0.000001)
+>>> len(b)
+10000000
+>>> b
+array([  0.00000000e+00,   1.00000000e-06,   2.00000000e-06, ...,
+         9.99999700e+00,   9.99999800e+00,   9.99999900e+00])
+>>> c = b * 1000
+>>> c
+array([  0.00000000e+00,   1.00000000e-03,   2.00000000e-03, ...,
+         9.99999700e+03,   9.99999800e+03,   9.99999900e+03])
+>>> d = b + 42
+>>> d
+array([ 42.      ,  42.000001,  42.000002, ...,  51.999997,  51.999998,
+        51.999999])
+>>> a
+array([1, 2, 3, 4, 5, 6, 7])
+>>> # Figure out where a < 4
+>>> for x in a:
+	if x < 4:
+		# No
+		pass
+
+	
+>>> a < 4
+array([ True,  True,  True, False, False, False, False], dtype=bool)
+>>> a[a < 4 ]
+array([1, 2, 3])
+>>> numpy.where(a < 4, a, 4)  # Clipping
+array([1, 2, 3, 4, 4, 4, 4])
+>>> a + 10
+array([11, 12, 13, 14, 15, 16, 17])
+>>> a
+array([1, 2, 3, 4, 5, 6, 7])
+>>> b = a[1:5]
+>>> b
+array([2, 3, 4, 5])
+>>> a
+array([1, 2, 3, 4, 5, 6, 7])
+>>> b
+array([2, 3, 4, 5])
+>>> b[1] = 999
+>>> b
+array([  2, 999,   4,   5])
+>>> a
+array([  1,   2, 999,   4,   5,   6,   7])
+>>> d = [1,2,3,4,5,6,7]
+>>> e = d[1:5]
+>>> e
+[2, 3, 4, 5]
+>>> e[1] = 999
+>>> e
+[2, 999, 4, 5]
+>>> d
+[1, 2, 3, 4, 5, 6, 7]
+>>> a
+array([  1,   2, 999,   4,   5,   6,   7])
+>>> a += 10
+>>> a
+array([  11,   12, 1009,   14,   15,   16,   17])
+>>> b
+array([  12, 1009,   14,   15])
+>>> b *= 1000
+>>> b
+array([  12000, 1009000,   14000,   15000])
+>>> a
+array([     11,   12000, 1009000,   14000,   15000,      16,      17])
+>>> len(columns)
+4
+>>> data = {
+	'routes': numpy.array(columns[0]),
+	'dates': numpy.array(columns[1]),
+	'daytypes': numpy.array(columns[2]),
+	'rides': numpy.array(columns[3])
+	}
+>>> data
+{'routes': array(['3', '4', '6', ..., 'X98', 'X98', 'X98'], 
+      dtype='<U4'), 'dates': array(['01/01/2001', '01/01/2001', '01/01/2001', ..., '05/26/2017',
+       '05/30/2017', '05/31/2017'], 
+      dtype='<U10'), 'daytypes': array(['U', 'U', 'U', ..., 'W', 'W', 'W'], 
+      dtype='<U1'), 'rides': array([7354, 9288, 6048, ...,    3,   20,   24])}
+>>> data['route']
+Traceback (most recent call last):
+  File "<pyshell#192>", line 1, in <module>
+    data['route']
+KeyError: 'route'
+>>> data['routes']
+array(['3', '4', '6', ..., 'X98', 'X98', 'X98'], 
+      dtype='<U4')
+>>> rt22 = data['routes'] == '22'
+>>> rt22
+array([False, False, False, ..., False, False, False], dtype=bool)
+>>> data['rides'][rt22]
+array([ 7877, 19558, 19286, ..., 10654, 16190, 16350])
+>>> sum(_)
+111886681
+>>> import pandas
+>>> data = pandas.read_csv('ctabus.csv')
+>>> data
+       route        date daytype  rides
+0          3  01/01/2001       U   7354
+1          4  01/01/2001       U   9288
+2          6  01/01/2001       U   6048
+3          8  01/01/2001       U   6309
+4          9  01/01/2001       U  11207
+5         10  01/01/2001       U    385
+6         11  01/01/2001       U    610
+7         12  01/01/2001       U   3678
+8         18  01/01/2001       U    375
+9         20  01/01/2001       U   7096
+10        21  01/01/2001       U   3454
+11        22  01/01/2001       U   7877
+12        27  01/01/2001       U   1903
+13        28  01/01/2001       U   5462
+14        29  01/01/2001       U   9303
+15        30  01/01/2001       U    600
+16        34  01/01/2001       U   3541
+17        35  01/01/2001       U   1526
+18        36  01/01/2001       U   7044
+19        43  01/01/2001       U    311
+20        44  01/01/2001       U   1463
+21        47  01/01/2001       U   2676
+22        49  01/01/2001       U  11829
+23        50  01/01/2001       U   1832
+24        51  01/01/2001       U   1752
+25        52  01/01/2001       U   4061
+26        53  01/01/2001       U   8058
+27        54  01/01/2001       U   4675
+28        55  01/01/2001       U   5805
+29        56  01/01/2001       U   5461
+...      ...         ...     ...    ...
+736431    X9  05/19/2017       W   7673
+736432    X9  05/22/2017       W   8626
+736433    X9  05/23/2017       W   8696
+736434    X9  05/24/2017       W   9170
+736435    X9  05/25/2017       W   8632
+736436    X9  05/26/2017       W   7990
+736437    X9  05/30/2017       W   8591
+736438    X9  05/31/2017       W   8998
+736439   X98  05/01/2017       W     13
+736440   X98  05/02/2017       W     13
+736441   X98  05/03/2017       W     19
+736442   X98  05/04/2017       W     18
+736443   X98  05/05/2017       W     19
+736444   X98  05/08/2017       W     25
+736445   X98  05/09/2017       W     23
+736446   X98  05/10/2017       W     20
+736447   X98  05/11/2017       W     21
+736448   X98  05/12/2017       W     19
+736449   X98  05/15/2017       W     22
+736450   X98  05/16/2017       W     24
+736451   X98  05/17/2017       W     21
+736452   X98  05/18/2017       W     24
+736453   X98  05/19/2017       W     24
+736454   X98  05/22/2017       W     24
+736455   X98  05/23/2017       W     27
+736456   X98  05/24/2017       W     28
+736457   X98  05/25/2017       W     22
+736458   X98  05/26/2017       W      3
+736459   X98  05/30/2017       W     20
+736460   X98  05/31/2017       W     24
+
+[736461 rows x 4 columns]
+>>> rt22 = data['route'] == '22'
+>>> rt22
+0         False
+1         False
+2         False
+3         False
+4         False
+5         False
+6         False
+7         False
+8         False
+9         False
+10        False
+11         True
+12        False
+13        False
+14        False
+15        False
+16        False
+17        False
+18        False
+19        False
+20        False
+21        False
+22        False
+23        False
+24        False
+25        False
+26        False
+27        False
+28        False
+29        False
+          ...  
+736431    False
+736432    False
+736433    False
+736434    False
+736435    False
+736436    False
+736437    False
+736438    False
+736439    False
+736440    False
+736441    False
+736442    False
+736443    False
+736444    False
+736445    False
+736446    False
+736447    False
+736448    False
+736449    False
+736450    False
+736451    False
+736452    False
+736453    False
+736454    False
+736455    False
+736456    False
+736457    False
+736458    False
+736459    False
+736460    False
+Name: route, dtype: bool
+>>> 
+>>> data[rt22]['rides'].sum()
+111886681
+>>> 
+====== RESTART: C:/Users/dave/Desktop/DataDeepDive/genbus.py ======
+Traceback (most recent call last):
+  File "C:/Users/dave/Desktop/DataDeepDive/genbus.py", line 29, in <module>
+    rows = read_rides_as_instance('ctabus.csv')
+NameError: name 'read_rides_as_instance' is not defined
+>>> 
+====== RESTART: C:/Users/dave/Desktop/DataDeepDive/genbus.py ======
+>>> rows
+<generator object read_rides_as_instances at 0x0000020058632830>
+>>> next(rows)
+<__main__.Row object at 0x0000020058658120>
+>>> def find_route(rows, route):
+	for row in rows:
+		if row.route == route:
+			yield row
+
+			
+>>> rt22 = find_route(rows, '22')
+>>> rt22
+<generator object find_route at 0x0000020058632938>
+>>> next(rt22)
+<__main__.Row object at 0x00000200586584C8>
+>>> rt22.route
+Traceback (most recent call last):
+  File "<pyshell#215>", line 1, in <module>
+    rt22.route
+AttributeError: 'generator' object has no attribute 'route'
+>>> next(rt22)
+<__main__.Row object at 0x0000020058661BD0>
+>>> r = _
+>>> r.route
+'22'
+>>> r.date
+'01/02/2001'
+>>> def rides_and_date(rows):
+	for row in rows:
+		yield (row.date, row.rides)
+
+		
+>>> data = rides_and_date(rt22)
+>>> data
+<generator object rides_and_date at 0x00000200586328E0>
+>>> next(data)
+('01/03/2001', 19286)
+>>> next(data)
+('01/04/2001', 20265)
+>>> max(data)
+('12/31/2016', 11654)
+>>> 
+====== RESTART: C:/Users/dave/Desktop/DataDeepDive/genbus.py ======
+(26896, '06/11/2008')
+>>> 

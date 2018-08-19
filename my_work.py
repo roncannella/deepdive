@@ -1,156 +1,747 @@
 Python 3.6.4 |Anaconda, Inc.| (default, Jan 16 2018, 10:22:32) [MSC v.1900 64 bit (AMD64)] on win32
 Type "copyright", "credits" or "license()" for more information.
->>> file = open('portfolio.csv")
-		
-SyntaxError: EOL while scanning string literal
->>> 
-		
->>> file = open("portfolio.csv")
-		
->>> file
-		
-<_io.TextIOWrapper name='portfolio.csv' mode='r' encoding='cp1252'>
->>> import csv
-		
->>> file
-		
-<_io.TextIOWrapper name='portfolio.csv' mode='r' encoding='cp1252'>
->>>  next(file)
-		
-SyntaxError: unexpected indent
->>> next(file)
-		
-'name,shares,price\n'
->>> rows = list(csv.reader(file))
-		
->>> rows
-		
-[['AA', '100', '32.20'], ['IBM', '50', '91.10'], ['CAT', '150', '83.44'], ['MSFT', '200', '51.23'], ['GE', '95', '40.37'], ['MSFT', '50', '65.10'], ['IBM', '100', '70.44']]
->>> pprint(rows)
-		
+>>> import readrides
+>>> rows = readrides.read_as_imnstances('ctabus.csv')
 Traceback (most recent call last):
-  File "<pyshell#10>", line 1, in <module>
-    pprint(rows)
-NameError: name 'pprint' is not defined
+  File "<pyshell#1>", line 1, in <module>
+    rows = readrides.read_as_imnstances('ctabus.csv')
+AttributeError: module 'readrides' has no attribute 'read_as_imnstances'
+>>> rows = readrides.read_as_instances('ctabus.csv')
+>>> len(rows)
+736461
 >>> from pprint import pprint
-		
 >>> pprint(rows)
-		
-[['AA', '100', '32.20'],
- ['IBM', '50', '91.10'],
- ['CAT', '150', '83.44'],
- ['MSFT', '200', '51.23'],
- ['GE', '95', '40.37'],
- ['MSFT', '50', '65.10'],
- ['IBM', '100', '70.44']]
->>> 
-		
->>> # 1 to many
-		
->>> from collections import defaultdict
-		
->>> d = defaultdict(list)
-		
->>> d
-		
-defaultdict(<class 'list'>, {})
->>> d['x']
-		
-[]
->>> d
-		
-defaultdict(<class 'list'>, {'x': []})
->>> d['y']
-		
-[]
->>> from collections import defaultdict
+[<readrides.Row object at 0x000002324993A2B0>,
+ <readrides.Row object at 0x000002324993A278>,
+ <readrides.Row object at 0x000002324993A2E8>,
+ <readrides.Row object at 0x000002324993A320>,
+ <readrides.Row object at 0x000002324993A358>,
+ <readrides.Row object at 0x000002324993A390>,
+ <readrides.Row object at 0x000002324993A400>,
+ <readrides.Row object at 0x000002324993A470>,
+ <readrides.Row object at 0x000002324993A4E0>,
+ <readrides.Row object at 0x000002324993A550>,
+ <readrides.Row object at 0x000002324993A5C0>,
+ <readrides.Row object at 0x000002324993A630>,
+ <readrides.Row object at 0x000002324993A6A0>,
+ <readrides.Row object at 0x000002324993A710>,
+ <readrides.Row object at 0x000002324993A780>,
+ <readrides.Row object at 0x000002324993A7F0>,
+ <readrides.Row object at 0x000002324993A860>,
+ <readrides.Row object at 0x000002324993A8D0>,
+ <readrides.Row object at 0x000002324993A940>,
+ <readrides.Row object at 0x000002324993A9B0>,
+ <readrides.Row object at 0x000002324993AA20>,
+ <readrides.Row object at 0x000002324993AA90>,
+ <readrides.Row object at 0x000002324993AB00>,
+ <readrides.Row object at 0x000002324993AB70>,
+ <readrides.Row object at 0x000002324993ABE0>,
+ <readrides.Row object at 0x000002324993AC50>,
+ <readrides.Row object at 0x000002324993ACC0>,
+ <readrides.Row object at 0x000002324993AD30>,
+ <readrides.Row object at 0x000002324993ADA0>,
+ <readrides.Row object at 0x000002324993AE10>,
+ <readrides.Row object at 0x000002324993AE80>,
+ <readrides.Row object at 0x000002324993AEF0>,
+ <readrides.Row object at 0x000002324993AF60>,
+ <readrides.Row object at 0x000002324993AFD0>,
+ <readrides.Row object at 0x0000023249940080>,
+ <readrides.Row object at 0x00000232499400F0>,
+ <readrides.Row object at 0x0000023249940160>,
+ <readrides.Row object at 0x00000232499401D0>,
+ <readrides.Row object at 0x0000023249940240>,
+ <readrides.Row object at 0x00000232499402B0>,
+ <readrides.Row object at 0x0000023249940320>,
+ <readrides.Row object at 0x0000023249940390>,
+ <readrides.Row object at 0x0000023249940400>,
+ <readrides.Row object at 0x0000023249940470>,
+ <readrides.Row object at 0x00000232499404E0>,
+ <readrides.Row object at 0x0000023249940550>,
+ <readrides.Row object at 0x00000232499405C0>,
+ <readrides.Row object at 0x0000023249940630>,
+ <readrides.Row object at 0x00000232499406A0>,
+ <readrides.Row object at 0x0000023249940710>,
+ <readrides.Row object at 0x0000023249940780>,
+ <readrides.Row object at 0x00000232499407F0>,
+ <readrides.Row object at 0x0000023249940860>,
+ <readrides.Row object at 0x00000232499408D0>,
+ <readrides.Row object at 0x0000023249940940>,
+ <readrides.Row object at 0x00000232499409B0>,
+ <readrides.Row object at 0x0000023249940A20>,
+ <readrides.Row object at 0x0000023249940A90>,
+ <readrides.Row object at 0x0000023249940B00>,
+ <readrides.Row object at 0x0000023249940B70>,
+ <readrides.Row object at 0x0000023249940BE0>,
+ <readrides.Row object at 0x0000023249940C50>,
+ <readrides.Row object at 0x0000023249940CC0>,
+ <readrides.Row object at 0x0000023249940D30>,
+ <readrides.Row object at 0x0000023249940DA0>,
+ <readrides.Row object at 0x0000023249940E10>,
+ <readrides.Row object at 0x0000023249940E80>,
+ <readrides.Row object at 0x0000023249940EF0>,
+ <readrides.Row object at 0x0000023249940F60>,
+ <readrides.Row object at 0x0000023249940FD0>,
+ <readrides.Row object at 0x0000023249942080>,
+ <readrides.Row object at 0x00000232499420F0>,
+ <readrides.Row object at 0x0000023249942160>,
+ <readrides.Row object at 0x0000023249942240>,
+ <readrides.Row object at 0x0000023249942208>,
+ <readrides.Row object at 0x00000232499422B0>,
+ <readrides.Row object at 0x0000023249942320>,
+ <readrides.Row object at 0x0000023249942390>,
+ <readrides.Row object at 0x0000023249942400>,
+ <readrides.Row object at 0x0000023249942470>,
+ <readrides.Row object at 0x00000232499424E0>,
+ <readrides.Row object at 0x0000023249942550>,
+ <readrides.Row object at 0x00000232499425C0>,
+ <readrides.Row object at 0x0000023249942630>,
+ <readrides.Row object at 0x00000232499426A0>,
+ <readrides.Row object at 0x0000023249942710>,
+ <readrides.Row object at 0x0000023249942748>,
+ <readrides.Row object at 0x0000023249942780>,
+ <readrides.Row object at 0x00000232499427B8>,
+ <readrides.Row object at 0x00000232499427F0>,
+ <readrides.Row object at 0x0000023249942828>,
+ <readrides.Row object at 0x0000023249942860>,
+ <readrides.Row object at 0x0000023249942898>,
+ <readrides.Row object at 0x00000232499428D0>,
+ <readrides.Row object at 0x0000023249942940>,
+ <readrides.Row object at 0x00000232499429B0>,
+ <readrides.Row object at 0x0000023249942A20>,
+ <readrides.Row object at 0x0000023249942A90>,
+ <readrides.Row object at 0x0000023249942B00>,
+ <readrides.Row object at 0x0000023249942B70>,
+ <readrides.Row object at 0x0000023249942BE0>,
+ <readrides.Row object at 0x0000023249942C50>,
+ <readrides.Row object at 0x0000023249942CC0>,
+ <readrides.Row object at 0x0000023249942D30>,
+ <readrides.Row object at 0x0000023249942DA0>,
+ <readrides.Row object at 0x0000023249942E10>,
+ <readrides.Row object at 0x0000023249942E80>,
+ <readrides.Row object at 0x0000023249942EF0>,
+ <readrides.Row object at 0x0000023249942F60>,
+ <readrides.Row object at 0x0000023249942FD0>,
+ <readrides.Row object at 0x0000023249945080>,
+ <readrides.Row object at 0x00000232499450F0>,
+ <readrides.Row object at 0x0000023249945160>,
+ <readrides.Row object at 0x00000232499451D0>,
+ <readrides.Row object at 0x0000023249945240>,
+ <readrides.Row object at 0x00000232499452B0>,
+ <readrides.Row object at 0x0000023249945320>,
+ <readrides.Row object at 0x0000023249945390>,
+ <readrides.Row object at 0x0000023249945400>,
+ <readrides.Row object at 0x0000023249945470>,
+ <readrides.Row object at 0x00000232499454E0>,
+ <readrides.Row object at 0x0000023249945550>,
+ <readrides.Row object at 0x00000232499455C0>,
+ <readrides.Row object at 0x0000023249945630>,
+ <readrides.Row object at 0x00000232499456A0>,
+ <readrides.Row object at 0x0000023249945710>,
+ <readrides.Row object at 0x0000023249945780>,
+ <readrides.Row object at 0x00000232499457F0>,
+ <readrides.Row object at 0x0000023249945860>,
+ <readrides.Row object at 0x00000232499458D0>,
+ <readrides.Row object at 0x0000023249945940>,
+ <readrides.Row object at 0x00000232499459B0>,
+ <readrides.Row object at 0x0000023249945A20>,
+ <readrides.Row object at 0x0000023249945A90>,
+ <readrides.Row object at 0x0000023249945B00>,
+ <readrides.Row object at 0x0000023249945B70>,
+ <readrides.Row object at 0x0000023249945BE0>,
+ <readrides.Row object at 0x0000023249945C50>,
+ <readrides.Row object at 0x0000023249945CC0>,
+ <readrides.Row object at 0x0000023249945D30>,
+ <readrides.Row object at 0x0000023249945DA0>,
+ <readrides.Row object at 0x0000023249945E10>,
+ <readrides.Row object at 0x0000023249945E80>,
+ <readrides.Row object at 0x0000023249945EF0>,
+ <readrides.Row object at 0x0000023249945F60>,
+ <readrides.Row object at 0x0000023249945FD0>,
+ <readrides.Row object at 0x0000023249948080>,
+ <readrides.Row object at 0x00000232499480F0>,
+ <readrides.Row object at 0x0000023249948160>,
+ <readrides.Row object at 0x00000232499481D0>,
+ <readrides.Row object at 0x0000023249948240>,
+ <readrides.Row object at 0x00000232499482B0>,
+ <readrides.Row object at 0x0000023249948320>,
+ <readrides.Row object at 0x0000023249948390>,
+ <readrides.Row object at 0x0000023249948400>,
+ <readrides.Row object at 0x0000023249948470>,
+ <readrides.Row object at 0x00000232499484E0>,
+ <readrides.Row object at 0x0000023249948550>,
+ <readrides.Row object at 0x00000232499485C0>,
+ <readrides.Row object at 0x0000023249948630>,
+ <readrides.Row object at 0x00000232499486A0>,
+ <readrides.Row object at 0x0000023249948710>,
+ <readrides.Row object at 0x0000023249948780>,
+ <readrides.Row object at 0x00000232499487F0>,
+ <readrides.Row object at 0x0000023249948860>,
+ <readrides.Row object at 0x00000232499488D0>,
+ <readrides.Row object at 0x0000023249948940>,
+ <readrides.Row object at 0x00000232499489B0>,
+ <readrides.Row object at 0x0000023249948A20>,
+ <readrides.Row object at 0x0000023249948A90>,
+ <readrides.Row object at 0x0000023249948B00>,
+ <readrides.Row object at 0x0000023249948B70>,
+ <readrides.Row object at 0x0000023249948BE0>,
+ <readrides.Row object at 0x0000023249948C50>,
+ <readrides.Row object at 0x0000023249948CC0>,
+ <readrides.Row object at 0x0000023249948D30>,
+ <readrides.Row object at 0x0000023249948DA0>,
+ <readrides.Row object at 0x0000023249948E10>,
+ <readrides.Row object at 0x0000023249948E80>,
+ <readrides.Row object at 0x0000023249948EF0>,
+ <readrides.Row object at 0x0000023249948F60>,
+ <readrides.Row object at 0x0000023249948FD0>,
+ <readrides.Row object at 0x000002324994B080>,
+ <readrides.Row object at 0x000002324994B0F0>,
+ <readrides.Row object at 0x000002324994B160>,
+ <readrides.Row object at 0x000002324994B1D0>,
+ <readrides.Row object at 0x000002324994B240>,
+ <readrides.Row object at 0x000002324994B2B0>,
+ <readrides.Row object at 0x000002324994B320>,
+ <readrides.Row object at 0x000002324994B390>,
+ <readrides.Row object at 0x000002324994B400>,
+ <readrides.Row object at 0x000002324994B470>,
+ <readrides.Row object at 0x000002324994B4E0>,
+ <readrides.Row object at 0x000002324994B550>,
+ <readrides.Row object at 0x000002324994B5C0>,
+ <readrides.Row object at 0x000002324994B630>,
+ <readrides.Row object at 0x000002324994B6A0>,
+ <readrides.Row object at 0x000002324994B780>,
+ <readrides.Row object at 0x000002324994B748>,
+ <readrides.Row object at 0x000002324994B7F0>,
+ <readrides.Row object at 0x000002324994B860>,
+ <readrides.Row object at 0x000002324994B8D0>,
+ <readrides.Row object at 0x000002324994B940>,
+ <readrides.Row object at 0x000002324994B9B0>,
+ <readrides.Row object at 0x000002324994BA20>,
+ <readrides.Row object at 0x000002324994BA90>,
+ <readrides.Row object at 0x000002324994BB00>,
+ <readrides.Row object at 0x000002324994BB70>,
+ <readrides.Row object at 0x000002324994BBE0>,
+ <readrides.Row object at 0x000002324994BC50>,
+ <readrides.Row object at 0x000002324994BCC0>,
+ <readrides.Row object at 0x000002324994BD30>,
+ <readrides.Row object at 0x000002324994BDA0>,
+ <readrides.Row object at 0x000002324994BE10>,
+ <readrides.Row object at 0x000002324994BE80>,
+ <readrides.Row object at 0x000002324994BEB8>,
+ <readrides.Row object at 0x000002324994BEF0>,
+ <readrides.Row object at 0x000002324994BF28>,
+ <readrides.Row object at 0x000002324994BF60>,
+ <readrides.Row object at 0x000002324994BF98>,
+ <readrides.Row object at 0x000002324994BFD0>,
+ <readrides.Row object at 0x000002324994E048>,
+ <readrides.Row object at 0x000002324994E080>,
+ <readrides.Row object at 0x000002324994E0F0>,
+ <readrides.Row object at 0x000002324994E160>,
+ <readrides.Row object at 0x000002324994E1D0>,
+ <readrides.Row object at 0x000002324994E240>,
+ <readrides.Row object at 0x000002324994E2B0>,
+ <readrides.Row object at 0x000002324994E320>,
+ <readrides.Row object at 0x000002324994E390>,
+ <readrides.Row object at 0x000002324994E400>,
+ <readrides.Row object at 0x000002324994E470>,
+ <readrides.Row object at 0x000002324994E4E0>,
+ <readrides.Row object at 0x000002324994E550>,
+ <readrides.Row object at 0x000002324994E5C0>,
+ <readrides.Row object at 0x000002324994E630>,
+ <readrides.Row object at 0x000002324994E6A0>,
+ <readrides.Row object at 0x000002324994E710>,
+ <readrides.Row object at 0x000002324994E780>,
+ <readrides.Row object at 0x000002324994E7F0>,
+ <readrides.Row object at 0x000002324994E860>,
+ <readrides.Row object at 0x000002324994E8D0>,
+ <readrides.Row object at 0x000002324994E940>,
+ <readrides.Row object at 0x000002324994E9B0>,
+ <readrides.Row object at 0x000002324994EA20>,
+ <readrides.Row object at 0x000002324994EA90>,
+ <readrides.Row object at 0x000002324994EB00>,
+ <readrides.Row object at 0x000002324994EB70>,
+ <readrides.Row object at 0x000002324994EBE0>,
+ <readrides.Row object at 0x000002324994EC50>,
+ <readrides.Row object at 0x000002324994ECC0>,
+ <readrides.Row object at 0x000002324994ED30>,
+ <readrides.Row object at 0x000002324994EDA0>,
+ <readrides.Row object at 0x000002324994EE10>,
+ <readrides.Row object at 0x000002324994EE80>,
+ <readrides.Row object at 0x000002324994EEF0>,
+ <readrides.Row object at 0x000002324994EF60>,
+ <readrides.Row object at 0x000002324994EFD0>,
+ <readrides.Row object at 0x0000023249950080>,
+ <readrides.Row object at 0x00000232499500F0>,
+ <readrides.Row object at 0x0000023249950160>,
+ <readrides.Row object at 0x00000232499501D0>,
+ <readrides.Row object at 0x0000023249950240>,
+ <readrides.Row object at 0x00000232499502B0>,
+ <readrides.Row object at 0x0000023249950320>,
+ <readrides.Row object at 0x0000023249950390>,
+ <readrides.Row object at 0x0000023249950400>,
+ <readrides.Row object at 0x0000023249950470>,
+ <readrides.Row object at 0x00000232499504E0>,
+ <readrides.Row object at 0x0000023249950550>,
+ <readrides.Row object at 0x00000232499505C0>,
+ <readrides.Row object at 0x0000023249950630>,
+ <readrides.Row object at 0x00000232499506A0>,
+ <readrides.Row object at 0x0000023249950710>,
+ <readrides.Row object at 0x0000023249950780>,
+ <readrides.Row object at 0x00000232499507F0>,
+ <readrides.Row object at 0x0000023249950860>,
+ <readrides.Row object at 0x00000232499508D0>,
+ <readrides.Row object at 0x0000023249950940>,
+ <readrides.Row object at 0x00000232499509B0>,
+ <readrides.Row object at 0x0000023249950A20>,
+ <readrides.Row object at 0x0000023249950A90>,
+ <readrides.Row object at 0x0000023249950B00>,
+ <readrides.Row object at 0x0000023249950B70>,
+ <readrides.Row object at 0x0000023249950BE0>,
+ <readrides.Row object at 0x0000023249950C50>,
+ <readrides.Row object at 0x0000023249950CC0>,
+ <readrides.Row object at 0x0000023249950D30>,
+ <readrides.Row object at 0x0000023249950DA0>,
+ <readrides.Row object at 0x0000023249950E10>,
+ <readrides.Row object at 0x0000023249950E80>,
+ <readrides.Row object at 0x0000023249950EF0>,
+ <readrides.Row object at 0x0000023249950F60>,
+ <readrides.Row object at 0x0000023249950FD0>,
+ <readrides.Row object at 0x0000023249954080>,
+ <readrides.Row object at 0x00000232499540F0>,
+ <readrides.Row object at 0x0000023249954160>,
+ <readrides.Row object at 0x00000232499541D0>,
+ <readrides.Row object at 0x0000023249954240>,
+ <readrides.Row object at 0x00000232499542B0>,
+ <readrides.Row object at 0x0000023249954320>,
+ <readrides.Row object at 0x0000023249954390>,
+ <readrides.Row object at 0x0000023249954400>,
+ <readrides.Row object at 0x0000023249954470>,
+ <readrides.Row object at 0x00000232499544E0>,
+ <readrides.Row object at 0x0000023249954550>,
+ <readrides.Row object at 0x00000232499545C0>,
+ <readrides.Row object at 0x0000023249954630>,
+ <readrides.Row object at 0x00000232499546A0>,
+ <readrides.Row object at 0x0000023249954710>,
+ <readrides.Row object at 0x0000023249954780>,
+ <readrides.Row object at 0x00000232499547F0>,
+ <readrides.Row object at 0x0000023249954860>,
+ <readrides.Row object at 0x00000232499548D0>,
+ <readrides.Row object at 0x0000023249954940>,
+ <readrides.Row object at 0x00000232499549B0>,
+ <readrides.Row object at 0x0000023249954A20>,
+ <readrides.Row object at 0x0000023249954A90>,
+ <readrides.Row object at 0x0000023249954B00>,
+ <readrides.Row object at 0x0000023249954B70>,
+ <readrides.Row object at 0x0000023249954BE0>,
+ <readrides.Row object at 0x0000023249954C50>,
+ <readrides.Row object at 0x0000023249954CC0>,
+ <readrides.Row object at 0x0000023249954D30>,
+ <readrides.Row object at 0x0000023249954DA0>,
+ <readrides.Row object at 0x0000023249954E10>,
+ <readrides.Row object at 0x0000023249954E80>,
+ <readrides.Row object at 0x0000023249954EF0>,
+ <readrides.Row object at 0x0000023249954F60>,
+ <readrides.Row object at 0x0000023249954FD0>,
+ <readrides.Row object at 0x0000023249955080>,
+ <readrides.Row object at 0x00000232499550F0>,
+ <readrides.Row object at 0x0000023249955160>,
+ <readrides.Row object at 0x00000232499551D0>,
+ <readrides.Row object at 0x0000023249955240>,
+ <readrides.Row object at 0x00000232499552B0>,
+ <readrides.Row object at 0x0000023249955320>,
+ <readrides.Row object at 0x0000023249955390>,
+ <readrides.Row object at 0x0000023249955400>,
+ <readrides.Row object at 0x0000023249955470>,
+ <readrides.Row object at 0x00000232499554E0>,
+ <readrides.Row object at 0x0000023249955550>,
+ <readrides.Row object at 0x00000232499555C0>,
+ <readrides.Row object at 0x00000232499555F8>,
+ <readrides.Row object at 0x0000023249955630>,
+ <readrides.Row object at 0x0000023249955668>,
+ <readrides.Row object at 0x00000232499556A0>,
+ <readrides.Row object at 0x00000232499556D8>,
+ <readrides.Row object at 0x0000023249955710>,
+ <readrides.Row object at 0x0000023249955748>,
+ <readrides.Row object at 0x0000023249955780>,
+ <readrides.Row object at 0x00000232499557F0>,
+ <readrides.Row object at 0x0000023249955860>,
+ <readrides.Row object at 0x00000232499558D0>,
+ <readrides.Row object at 0x0000023249955940>,
+ <readrides.Row object at 0x00000232499559B0>,
+ <readrides.Row object at 0x0000023249955A20>,
+ <readrides.Row object at 0x0000023249955A90>,
+ <readrides.Row object at 0x0000023249955B00>,
+ <readrides.Row object at 0x0000023249955B70>,
+ <readrides.Row object at 0x0000023249955BE0>,
+ <readrides.Row object at 0x0000023249955C50>,
+ <readrides.Row object at 0x0000023249955CC0>,
+ <readrides.Row object at 0x0000023249955D30>,
+ <readrides.Row object at 0x0000023249955DA0>,
+ <readrides.Row object at 0x0000023249955E10>,
+ <readrides.Row object at 0x0000023249955E80>,
+ <readrides.Row object at 0x0000023249955EF0>,
+ <readrides.Row object at 0x0000023249955F60>,
+ <readrides.Row object at 0x0000023249955FD0>,
+ <readrides.Row object at 0x0000023249959080>,
+ <readrides.Row object at 0x00000232499590F0>,
+ <readrides.Row object at 0x0000023249959160>,
+ <readrides.Row object at 0x00000232499591D0>,
+ <readrides.Row object at 0x0000023249959240>,
+ <readrides.Row object at 0x00000232499592B0>,
+ <readrides.Row object at 0x0000023249959320>,
+ <readrides.Row object at 0x0000023249959390>,
+ <readrides.Row object at 0x0000023249959400>,
+ <readrides.Row object at 0x0000023249959470>,
+ <readrides.Row object at 0x00000232499594E0>,
+ <readrides.Row object at 0x0000023249959550>,
+ <readrides.Row object at 0x00000232499595C0>,
+ <readrides.Row object at 0x0000023249959630>,
+ <readrides.Row object at 0x00000232499596A0>,
+ <readrides.Row object at 0x0000023249959710>,
+ <readrides.Row object at 0x0000023249959780>,
+ <readrides.Row object at 0x00000232499597F0>,
+ <readrides.Row object at 0x0000023249959860>,
+ <readrides.Row object at 0x00000232499598D0>,
+ <readrides.Row object at 0x0000023249959940>,
+ <readrides.Row object at 0x00000232499599B0>,
+ <readrides.Row object at 0x0000023249959A20>,
+ <readrides.Row object at 0x0000023249959A90>,
+ <readrides.Row object at 0x0000023249959B00>,
+ <readrides.Row object at 0x0000023249959B70>,
+ <readrides.Row object at 0x0000023249959BE0>,
+ <readrides.Row object at 0x0000023249959C50>,
+ <readrides.Row object at 0x0000023249959CC0>,
+ <readrides.Row object at 0x0000023249959D30>,
+ <readrides.Row object at 0x0000023249959DA0>,
+ <readrides.Row object at 0x0000023249959E10>,
+ <readrides.Row object at 0x0000023249959E80>,
+ <readrides.Row object at 0x0000023249959EF0>,
+ <readrides.Row object at 0x0000023249959F60>,
+ <readrides.Row object at 0x0000023249959FD0>,
+ <readrides.Row object at 0x000002324995C080>,
+ <readrides.Row object at 0x000002324995C0F0>,
+ <readrides.Row object at 0x000002324995C160>,
+ <readrides.Row object at 0x000002324995C1D0>,
+ <readrides.Row object at 0x000002324995C240>,
+ <readrides.Row object at 0x000002324995C2B0>,
+ <readrides.Row object at 0x000002324995C320>,
+ <readrides.Row object at 0x000002324995C390>,
+ <readrides.Row object at 0x000002324995C400>,
+ <readrides.Row object at 0x000002324995C470>,
+ <readrides.Row object at 0x000002324995C4E0>,
+ <readrides.Row object at 0x000002324995C550>,
+ <readrides.Row object at 0x000002324995C5C0>,
+ <readrides.Row object at 0x000002324995C630>,
+ <readrides.Row object at 0x000002324995C6A0>,
+ <readrides.Row object at 0x000002324995C710>,
+ <readrides.Row object at 0x000002324995C780>,
+ <readrides.Row object at 0x000002324995C7F0>,
+ <readrides.Row object at 0x000002324995C860>,
+ <readrides.Row object at 0x000002324995C8D0>,
+ <readrides.Row object at 0x000002324995C940>,
+ <readrides.Row object at 0x000002324995C9B0>,
+ <readrides.Row object at 0x000002324995CA20>,
+ <readrides.Row object at 0x000002324995CA90>,
+ <readrides.Row object at 0x000002324995CB00>,
+ <readrides.Row object at 0x000002324995CB70>,
+ <readrides.Row object at 0x000002324995CBE0>,
+ <readrides.Row object at 0x000002324995CC50>,
+ <readrides.Row object at 0x000002324995CCC0>,
+ <readrides.Row object at 0x000002324995CD30>,
+ <readrides.Row object at 0x000002324995CDA0>,
+ <readrides.Row object at 0x000002324995CE10>,
+ <readrides.Row object at 0x000002324995CE80>,
+ <readrides.Row object at 0x000002324995CEF0>,
+ <readrides.Row object at 0x000002324995CF60>,
+ <readrides.Row object at 0x000002324995CFD0>,
+ <readrides.Row object at 0x000002324995F080>,
+ <readrides.Row object at 0x000002324995F0F0>,
+ <readrides.Row object at 0x000002324995F160>,
+ <readrides.Row object at 0x000002324995F1D0>,
+ <readrides.Row object at 0x000002324995F240>,
+ <readrides.Row object at 0x000002324995F2B0>,
+ <readrides.Row object at 0x000002324995F320>,
+ <readrides.Row object at 0x000002324995F390>,
+ <readrides.Row object at 0x000002324995F400>,
+ <readrides.Row object at 0x000002324995F470>,
+ <readrides.Row object at 0x000002324995F4E0>,
+ <readrides.Row object at 0x000002324995F550>,
+ <readrides.Row object at 0x000002324995F5C0>,
+ <readrides.Row object at 0x000002324995F630>,
+ <readrides.Row object at 0x000002324995F6A0>,
+ <readrides.Row object at 0x000002324995F710>,
+ <readrides.Row object at 0x000002324995F780>,
+ <readrides.Row object at 0x000002324995F7F0>,
+ <readrides.Row object at 0x000002324995F860>,
+ <readrides.Row object at 0x000002324995F8D0>,
+ <readrides.Row object at 0x000002324995F940>,
+ <readrides.Row object at 0x000002324995F9B0>,
+ <readrides.Row object at 0x000002324995FA20>,
+ <readrides.Row object at 0x000002324995FA90>,
+ <readrides.Row object at 0x000002324995FB00>,
+ <readrides.Row object at 0x000002324995FB70>,
+ <readrides.Row object at 0x000002324995FBE0>,
+ <readrides.Row object at 0x000002324995FC50>,
+ <readrides.Row object at 0x000002324995FCC0>,
+ <readrides.Row object at 0x000002324995FCF8>,
+ <readrides.Row object at 0x000002324995FD30>,
+ <readrides.Row object at 0x000002324995FD68>,
+ <readrides.Row object at 0x000002324995FDA0>,
+ <readrides.Row object at 0x000002324995FDD8>,
+ <readrides.Row object at 0x000002324995FE10>,
+ <readrides.Row object at 0x000002324995FE48>,
+ <readrides.Row object at 0x000002324995FE80>,
+ <readrides.Row object at 0x000002324995FEF0>,
+ <readrides.Row object at 0x000002324995FF60>,
+ <readrides.Row object at 0x000002324995FFD0>,
+ <readrides.Row object at 0x0000023249962080>,
+ <readrides.Row object at 0x00000232499620F0>,
+ <readrides.Row object at 0x0000023249962160>,
+ <readrides.Row object at 0x00000232499621D0>,
+ <readrides.Row object at 0x0000023249962240>,
+ <readrides.Row object at 0x00000232499622B0>,
+ <readrides.Row object at 0x0000023249962320>,
+ <readrides.Row object at 0x0000023249962390>,
+ <readrides.Row object at 0x0000023249962400>,
+ <readrides.Row object at 0x0000023249962470>,
+ <readrides.Row object at 0x00000232499624E0>,
+ <readrides.Row object at 0x0000023249962550>,
+ <readrides.Row object at 0x00000232499625C0>,
+ <readrides.Row object at 0x0000023249962630>,
+ <readrides.Row object at 0x00000232499626A0>,
+ <readrides.Row object at 0x0000023249962710>,
+ <readrides.Row object at 0x0000023249962780>,
+ <readrides.Row object at 0x00000232499627F0>,
+ <readrides.Row object at 0x0000023249962860>,
+ <readrides.Row object at 0x00000232499628D0>,
+ <readrides.Row object at 0x0000023249962940>,
+ <readrides.Row object at 0x00000232499629B0>,
+ <readrides.Row object at 0x0000023249962A20>,
+ <readrides.Row object at 0x0000023249962A90>,
+ <readrides.Row object at 0x0000023249962B00>,
+ <readrides.Row object at 0x0000023249962B70>,
+ <readrides.Row object at 0x0000023249962BE0>,
+ <readrides.Row object at 0x0000023249962C50>,
+ <readrides.Row object at 0x0000023249962CC0>,
+ <readrides.Row object at 0x0000023249962D30>,
+ <readrides.Row object at 0x0000023249962DA0>,
+ <readrides.Row object at 0x0000023249962E10>,
+ <readrides.Row object at 0x0000023249962E80>,
+ <readrides.Row object at 0x0000023249962EF0>,
+ <readrides.Row object at 0x0000023249962F60>,
+ <readrides.Row object at 0x0000023249962FD0>,
+ <readrides.Row object at 0x0000023249964080>,
+ <readrides.Row object at 0x00000232499640F0>,
+ <readrides.Row object at 0x0000023249964160>,
+ <readrides.Row object at 0x00000232499641D0>,
+ <readrides.Row object at 0x0000023249964240>,
+ <readrides.Row object at 0x00000232499642B0>,
+ <readrides.Row object at 0x0000023249964320>,
+ <readrides.Row object at 0x0000023249964390>,
+ <readrides.Row object at 0x0000023249964400>,
+ <readrides.Row object at 0x0000023249964470>,
+ <readrides.Row object at 0x00000232499644E0>,
+ <readrides.Row object at 0x0000023249964550>,
+ <readrides.Row object at 0x00000232499645C0>,
+ <readrides.Row object at 0x0000023249964630>,
+ <readrides.Row object at 0x00000232499646A0>,
+ <readrides.Row object at 0x0000023249964710>,
+ <readrides.Row object at 0x0000023249964780>,
+ <readrides.Row object at 0x00000232499647F0>,
+ <readrides.Row object at 0x0000023249964860>,
+ <readrides.Row object at 0x00000232499648D0>,
+ <readrides.Row object at 0x0000023249964940>,
+ <readrides.Row object at 0x00000232499649B0>,
+ <readrides.Row object at 0x0000023249964A20>,
+ <readrides.Row object at 0x0000023249964A90>,
+ <readrides.Row object at 0x0000023249964B00>,
+ <readrides.Row object at 0x0000023249964B70>,
+ <readrides.Row object at 0x0000023249964BE0>,
+ <readrides.Row object at 0x0000023249964C50>,
+ <readrides.Row object at 0x0000023249964CC0>,
+ <readrides.Row object at 0x0000023249964D30>,
+ <readrides.Row object at 0x0000023249964DA0>,
+ <readrides.Row object at 0x0000023249964E10>,
+ <readrides.Row object at 0x0000023249964E80>,
+ <readrides.Row object at 0x0000023249964EF0>,
+ <readrides.Row object at 0x0000023249964F60>,
+ <readrides.Row object at 0x0000023249964FD0>,
+ <readrides.Row object at 0x0000023249968080>,
+ <readrides.Row object at 0x00000232499680F0>,
+ <readrides.Row object at 0x0000023249968160>,
+ <readrides.Row object at 0x00000232499681D0>,
+ <readrides.Row object at 0x0000023249968240>,
+ <readrides.Row object at 0x00000232499682B0>,
+ <readrides.Row object at 0x0000023249968320>,
+ <readrides.Row object at 0x0000023249968390>,
+ <readrides.Row object at 0x0000023249968400>,
+ <readrides.Row object at 0x0000023249968470>,
+ <readrides.Row object at 0x00000232499684E0>,
+ <readrides.Row object at 0x0000023249968550>,
+ <readrides.Row object at 0x00000232499685C0>,
+ <readrides.Row object at 0x0000023249968630>,
+ <readrides.Row object at 0x00000232499686A0>,
+ <readrides.Row object at 0x0000023249968710>,
+ <readrides.Row object at 0x0000023249968780>,
+ <readrides.Row object at 0x00000232499687F0>,
+ <readrides.Row object at 0x0000023249968860>,
+ <readrides.Row object at 0x00000232499688D0>,
+ <readrides.Row object at 0x0000023249968940>,
+ <readrides.Row object at 0x00000232499689B0>,
+ <readrides.Row object at 0x0000023249968A20>,
+ <readrides.Row object at 0x0000023249968A90>,
+ <readrides.Row object at 0x0000023249968B00>,
+ <readrides.Row object at 0x0000023249968B70>,
+ <readrides.Row object at 0x0000023249968BE0>,
+ <readrides.Row object at 0x0000023249968C50>,
+ <readrides.Row object at 0x0000023249968CC0>,
+ <readrides.Row object at 0x0000023249968D30>,
+ <readrides.Row object at 0x0000023249968DA0>,
+ <readrides.Row object at 0x0000023249968E10>,
+ <readrides.Row object at 0x0000023249968E80>,
+ <readrides.Row object at 0x0000023249968EF0>,
+ <readrides.Row object at 0x0000023249968F60>,
+ <readrides.Row object at 0x0000023249968FD0>,
+ <readrides.Row object at 0x000002324996A080>,
+ <readrides.Row object at 0x000002324996A0F0>,
+ <readrides.Row object at 0x000002324996A160>,
+ <readrides.Row object at 0x000002324996A1D0>,
+ <readrides.Row object at 0x000002324996A240>,
+ <readrides.Row object at 0x000002324996A2B0>,
+ <readrides.Row object at 0x000002324996A320>,
+ <readrides.Row object at 0x000002324996A390>,
+ <readrides.Row object at 0x000002324996A400>,
+ <readrides.Row object at 0x000002324996A438>,
+ <readrides.Row object at 0x000002324996A470>,
+ <readrides.Row object at 0x000002324996A4A8>,
+ <readrides.Row object at 0x000002324996A4E0>,
+ <readrides.Row object at 0x000002324996A518>,
+ <readrides.Row object at 0x000002324996A588>,
+ <readrides.Row object at 0x000002324996A5F8>,
+ <readrides.Row object at 0x000002324996A668>,
+ <readrides.Row object at 0x000002324996A6D8>,
+ <readrides.Row object at 0x000002324996A748>,
+ <readrides.Row object at 0x000002324996A7B8>,
+ <readrides.Row object at 0x000002324996A828>,
+ <readrides.Row object at 0x000002324996A898>,
+ <readrides.Row object at 0x000002324996A908>,
+ <readrides.Row object at 0x000002324996A978>,
+ <readrides.Row object at 0x000002324996A9E8>,
+ <readrides.Row object at 0x000002324996AA58>,
+ <readrides.Row object at 0x000002324996AAC8>,
+ <readrides.Row object at 0x000002324996AB38>,
+ <readrides.Row object at 0x000002324996ABA8>,
+ <readrides.Row object at 0x000002324996AC18>,
+ <readrides.Row object at 0x000002324996AC88>,
+ <readrides.Row object at 0x000002324996ACF8>,
+ <readrides.Row object at 0x000002324996AD68>,
+ <readrides.Row object at 0x000002324996ADD8>,
+ <readrides.Row object at 0x000002324996AE48>,
+ <readrides.Row object at 0x000002324996AEB8>,
+ <readrides.Row object at 0x000002324996AF28>,
+ <readrides.Row object at 0x000002324996AF98>,
+ <readrides.Row object at 0x000002324996D048>,
+ <readrides.Row object at 0x000002324996D0B8>,
+ <readrides.Row object at 0x000002324996D128>,
+ <readrides.Row object at 0x000002324996D198>,
+ <readrides.Row object at 0x000002324996D208>,
+ <readrides.Row object at 0x000002324996D278>,
+ <readrides.Row object at 0x000002324996D2E8>,
+ <readrides.Row object at 0x000002324996D358>,
+ <readrides.Row object at 0x000002324996D3C8>,
+ <readrides.Row object at 0x000002324996D438>,
+ <readrides.Row object at 0x000002324996D4A8>,
+ <readrides.Row object at 0x000002324996D518>,
+ <readrides.Row object at 0x000002324996D588>,
+ <readrides.Row object at 0x000002324996D5F8>,
+ <readrides.Row object at 0x000002324996D668>,
+ <readrides.Row object at 0x000002324996D6D8>,
+ <readrides.Row object at 0x000002324996D748>,
+ <readrides.Row object at 0x000002324996D7B8>,
+ <readrides.Row object at 0x000002324996D828>,
+ <readrides.Row object at 0x000002324996D898>,
+ Traceback (most recent call last):
+  File "<pyshell#5>", line 1, in <module>
+    pprint(rows)
+  File "D:\Users\Ron\Miniconda3\lib\pprint.py", line 53, in pprint
+    printer.pprint(object)
+  File "D:\Users\Ron\Miniconda3\lib\pprint.py", line 139, in pprint
+    self._format(object, self._stream, 0, 0, {}, 0)
+  File "D:\Users\Ron\Miniconda3\lib\pprint.py", line 167, in _format
+    p(self, object, stream, indent, allowance, context, level + 1)
+  File "D:\Users\Ron\Miniconda3\lib\pprint.py", line 210, in _pprint_list
+    context, level)
+  File "D:\Users\Ron\Miniconda3\lib\pprint.py", line 385, in _format_items
+    write(delim)
 KeyboardInterrupt
 >>> 
-		
 >>> 
-		
 >>> 
-		
 >>> 
-		
 >>> 
-		
 >>> 
-		
 >>> 
-		
 >>> 
-		
->>> d
-		
-defaultdict(<class 'list'>, {'x': [], 'y': []})
->>> d[x]
-		
-Traceback (most recent call last):
-  File "<pyshell#30>", line 1, in <module>
-    d[x]
-NameError: name 'x' is not defined
->>> d:x
-		
-Traceback (most recent call last):
-  File "<pyshell#31>", line 1, in <module>
-    d:x
-NameError: name 'x' is not defined
->>> 
-		
->>> d.x
-		
-Traceback (most recent call last):
-  File "<pyshell#33>", line 1, in <module>
-    d.x
-AttributeError: 'collections.defaultdict' object has no attribute 'x'
->>> byname = defaultdict(list)
-		
->>> for row in rows:
-		byname[row[0]].append(row)
-
-		
->>> pprint(byname)
-		
-defaultdict(<class 'list'>,
-            {'AA': [['AA', '100', '32.20']],
-             'CAT': [['CAT', '150', '83.44']],
-             'GE': [['GE', '95', '40.37']],
-             'IBM': [['IBM', '50', '91.10'], ['IBM', '100', '70.44']],
-             'MSFT': [['MSFT', '200', '51.23'], ['MSFT', '50', '65.10']]})
->>> byname['IBM']
-		
-[['IBM', '50', '91.10'], ['IBM', '100', '70.44']]
->>> from collections import Counter
-		
->>> c = Counter()
-		
->>> c['x'] += 10
-		
->>> c
-		
-Counter({'x': 10})
->>> c['y'] += 223
-		
->>> c
-		
-Counter({'y': 223, 'x': 10})
->>> c[x] += 10
-		
-Traceback (most recent call last):
-  File "<pyshell#46>", line 1, in <module>
-    c[x] += 10
-NameError: name 'x' is not defined
->>> c['x'] += 223
-		
->>> c
-		
-Counter({'x': 233, 'y': 223})
->>> c
-		
-Counter({'x': 233, 'y': 223})
->>> routes = {}
-		
 >>> routes = set()
-		
+>>> 
+>>> for row in rows:
+	routes.add(row.routes)
+
+	
+Traceback (most recent call last):
+  File "<pyshell#18>", line 2, in <module>
+    routes.add(row.routes)
+AttributeError: 'Row' object has no attribute 'routes'
+>>> 
+KeyboardInterrupt
+>>> for row in rows:
+	routes.add(row.route)
+
+	
+>>> print(len(route), 'routes')
+Traceback (most recent call last):
+  File "<pyshell#22>", line 1, in <module>
+    print(len(route), 'routes')
+NameError: name 'route' is not defined
+>>> print(len(routes), 'routes')
+185 routes
+>>> route_and_date = {}
+>>> for row in rows:
+	route_and_date.add[row.route, row.date] = row.rides
+
+	
+Traceback (most recent call last):
+  File "<pyshell#27>", line 2, in <module>
+    route_and_date.add[row.route, row.date] = row.rides
+AttributeError: 'dict' object has no attribute 'add'
+>>> for row in trows:
+	
+KeyboardInterrupt
+>>> for row in rows;
+SyntaxError: invalid syntax
+>>> for row in rows:
+	route_and_date[row.route, row.date] = row.rides
+
+	
+>>> route_and_date['22','04/09/2007']
+24154
+>>> route_and_date['22','04/19/2007']
+24356
+>>> from collections import Counter
+>>> route_totals = Counter()
+>>> for row in rows:
+	routes_totals[row.route] += row.rides
+
+	
+Traceback (most recent call last):
+  File "<pyshell#39>", line 2, in <module>
+    routes_totals[row.route] += row.rides
+NameError: name 'routes_totals' is not defined
+>>> for row in rows:
+	route_totals[row.route] += row.rides
+
+	
+>>> route_totals['22']
+111886681
+>>> pprint(route_totals['22'])
+111886681
 >>> 

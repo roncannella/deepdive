@@ -1,0 +1,1002 @@
+Python 3.6.0 (v3.6.0:41df79263a11, Dec 23 2016, 08:06:12) [MSC v.1900 64 bit (AMD64)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> print("Hello World")
+Hello World
+>>> 
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 8396.[press enter]
+>>> 
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 4224.[press enter]
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 9984.[press enter]
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 9760.[press enter]
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 1000.[press enter]
+>>> 
+>>> 
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 8328.[press enter]
+>>> row = ('22', '1/1/2011','U',7328)
+>>> row2 = Row('22','1/1/2011','U', 7328)
+>>> row[0]
+'22'
+>>> row[1]
+'1/1/2011'
+>>> len(row)
+4
+>>> row[5]
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    row[5]
+IndexError: tuple index out of range
+>>> row2
+<__main__.Row object at 0x000002096C690438>
+>>> row2[0]
+Traceback (most recent call last):
+  File "<pyshell#9>", line 1, in <module>
+    row2[0]
+TypeError: 'Row' object does not support indexing
+>>> len(row2)
+Traceback (most recent call last):
+  File "<pyshell#10>", line 1, in <module>
+    len(row2)
+TypeError: object of type 'Row' has no len()
+>>> 
+========================== RESTART: Shell ==========================
+>>> import pandas
+>>> data = pandas.read_csv('ctabus.csv')
+>>> import os
+>>> os.getpid()
+9508
+>>> data.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 736461 entries, 0 to 736460
+Data columns (total 4 columns):
+route      736461 non-null object
+date       736461 non-null object
+daytype    736461 non-null object
+rides      736461 non-null int64
+dtypes: int64(1), object(3)
+memory usage: 22.5+ MB
+>>> 
+======== RESTART: C:/Users/dave/Desktop/DataDeepDive/cta.py ========
+>>> len(rows)
+736461
+>>> len(routes)
+185
+>>> routes
+{'82', '6', '10', '170', '203', '127', 'X99', '147', 'R79', '53', '19', '68', '39', '18', '169', '21', '24', '81W', '47', '136', '76', '130', '106', '22', '103', '51', '73', '52', '33', '132', '115', '112', '173', '172', '40', '77', '37', '49', '38', '80', '93', '36', 'X54', 'X21', '95', 'N201', 'X3', '119', '108', '85', '120', 'R55', '79', '96', '145', '75', '202', '134', '192', '92', '9', '85A', '171', 'X20', 'X49', '64', '71', '1', '137', '55', '25', '60', '165', '53AL', '123', '65', '128', '1002', '8', '121', '29', '59', '1001', '200', '290', '3', '151', '67', '28', '94', '62H', '152', '148', 'R87', '4', '154', '63', '55A', '50', '56', '5', '126', '15', '66', '14', '155', '992', '49B', 'X80', '49A', '31', '63W', '55N', '144', '206', '157', '56A', '174', '90N', '69', '122', '8A', '30', '88', '17', '87', '44', '95E', '11', '135', '156', '204', '69BR', '86', 'R95', '205', '78', '2', 'X4', '57', '54', '81', '143', '168', '111A', '27', '146', '129', 'J14', 'X28', '91', '95W', '53A', '62', '97', '12', '74', '111', '43', 'R63', '999', '125', 'X9', 'R69', '201', 'R22', '100', '26', '90', '290S', '48', '124', 'R39', '34', '35', '54A', '54B', '20', '7', '70', '84', 'X55', '72', 'X98', '52A'}
+>>> 
+======== RESTART: C:/Users/dave/Desktop/DataDeepDive/cta.py ========
+>>> route_day['22','4/9/2007']
+Traceback (most recent call last):
+  File "<pyshell#19>", line 1, in <module>
+    route_day['22','4/9/2007']
+KeyError: ('22', '4/9/2007')
+>>> route_day['22','04/09/2007']
+24154
+>>> route_day['22','04/10/2007']
+24731
+>>> route_day['6','05/03/2003']
+14371
+>>> d = { }
+>>> d['x'] += 10
+Traceback (most recent call last):
+  File "<pyshell#24>", line 1, in <module>
+    d['x'] += 10
+KeyError: 'x'
+>>> d['y'] += 5
+Traceback (most recent call last):
+  File "<pyshell#25>", line 1, in <module>
+    d['y'] += 5
+KeyError: 'y'
+>>> d['x'] = 0
+>>> d['y'] = 0
+>>> d['x'] += 5
+>>> d['y'] += 15
+>>> d
+{'x': 5, 'y': 15}
+>>> route_totals = { }
+>>> for row in rows:
+	route_totals[row.route] += row.rides
+
+	
+Traceback (most recent call last):
+  File "<pyshell#34>", line 2, in <module>
+    route_totals[row.route] += row.rides
+KeyError: '3'
+>>> route_totals
+{}
+>>> from collections import Counter
+>>> d = Counter()
+>>> d['x'] += 10
+>>> d['y'] += 2
+>>> c['a'] += 15
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    c['a'] += 15
+NameError: name 'c' is not defined
+>>> d['a'] ++ 15
+15
+>>> d['a'] += 15
+>>> d
+Counter({'a': 15, 'x': 10, 'y': 2})
+>>> route_totals = Counter()
+>>> for row in rows:
+	route_totals[row.route] += row.rides
+
+	
+>>> route_totals['22']
+111886681
+>>> route_totals['6']
+65624844
+>>> route_totals.most_common(10)
+[('79', 165309712), ('9', 147507182), ('49', 121673788), ('66', 120662106), ('4', 120176371), ('77', 114243228), ('22', 111886681), ('3', 111559864), ('151', 110893971), ('53', 109925583)]
+>>> 
+======== RESTART: C:/Users/dave/Desktop/DataDeepDive/cta.py ========
+79 165309712
+9 147507182
+49 121673788
+66 120662106
+4 120176371
+77 114243228
+22 111886681
+3 111559864
+151 110893971
+53 109925583
+>>> from collections import defaultdict
+>>> d = defaultdict(list)
+>>> d
+defaultdict(<class 'list'>, {})
+>>> d['x']
+[]
+>>> d['y']
+[]
+>>> d['a']
+[]
+>>> d
+defaultdict(<class 'list'>, {'x': [], 'y': [], 'a': []})
+>>> d = defaultdict(dict)
+>>> d['x']
+{}
+>>> d['y']
+{}
+>>> d
+defaultdict(<class 'dict'>, {'x': {}, 'y': {}})
+>>> d = defaultdict(str)
+>>> d['x']
+''
+>>> d['y']
+''
+>>> d
+defaultdict(<class 'str'>, {'x': '', 'y': ''})
+>>> 
+======== RESTART: C:/Users/dave/Desktop/DataDeepDive/cta.py ========
+79 165309712
+9 147507182
+49 121673788
+66 120662106
+4 120176371
+77 114243228
+22 111886681
+3 111559864
+151 110893971
+53 109925583
+>>> totals_by_year['2011']['22']
+7392947
+>>> totals_by_year['2005']
+Counter({'79': 10817844, '9': 9827620, '4': 7772837, '20': 7324954, '3': 7295348, '53': 7268004, '77': 6985756, '66': 6792697, '49': 6769232, '63': 6676797, '151': 6651181, '22': 6578009, '8': 6185736, '82': 5753550, '87': 5329695, '29': 5154670, '72': 5072833, '36': 5052913, '67': 4737825, '81': 4670595, '55': 4530692, '62': 4436791, '56': 4353553, '60': 4271122, '14': 3988521, '74': 3955091, '80': 3932356, '85': 3904500, '54': 3863232, '47': 3853034, '76': 3796925, '71': 3722545, '6': 3641799, '147': 3605213, '12': 3588030, '52': 3534589, '70': 3397318, '152': 3391259, '94': 3354927, 'X49': 2987609, '28': 2950227, '126': 2844510, '146': 2838773, '78': 2813433, '91': 2692051, '53A': 2677342, '15': 2503180, '75': 2490638, '50': 2400924, '92': 2336703, '156': 2296988, '21': 2284373, '155': 2121330, '52A': 2046810, '65': 2021188, '119': 1949421, '111': 1907620, '44': 1907101, '145': 1882441, '34': 1864786, '73': 1819104, '35': 1744868, '95E': 1690207, '54B': 1581849, '49B': 1566413, '90': 1550004, '95W': 1516211, '7': 1471603, '84': 1195561, '8A': 1133477, '103': 1131238, '97': 1114501, '112': 1040252, '59': 1028575, '30': 1027088, '24': 988671, '11': 967760, '93': 944374, '57': 907139, '157': 851080, '51': 828141, '1': 792688, 'X80': 792125, '125': 770735, '108': 676753, '135': 650175, '37': 644311, '63W': 630849, '2': 619741, '26': 594351, '106': 567195, '88': 533276, '81W': 514364, '120': 485837, '121': 480796, '148': 468469, '86': 465273, '39': 463381, '68': 461632, '124': 456948, '18': 452371, '201': 446497, '134': 441970, '43': 419560, '136': 396215, 'X55': 390335, '62H': 363870, '206': 326401, '54A': 304042, '205': 297112, '171': 293263, '123': 285423, '48': 278944, '96': 269538, '85A': 262264, '129': 261795, '100': 245976, '55N': 244577, '143': 233395, '144': 229640, '10': 226516, '172': 212328, '56A': 207248, 'X28': 201030, '122': 190493, '49A': 171696, '33': 155833, '17': 132737, '127': 119819, '90N': 118392, '25': 100378, 'X98': 95197, '69': 88248, '170': 86129, '169': 66418, '200': 61029, 'X4': 60605, '173': 56769, '53AL': 54381, '154': 49839, '64': 45589, '19': 44981, 'X3': 35780, '130': 23874, '40': 18745, '128': 17198, '168': 17029, '1001': 13175, 'X21': 8714, 'X99': 7465, '290S': 1600})
+>>> totals_by_year['2016']
+Counter({'79': 8268367, '66': 7088030, '77': 6671135, '4': 6424587, '8': 6375504, '9': 6329587, '53': 5895532, '82': 5775101, '3': 5698439, '22': 5620134, '49': 5562628, '151': 5356727, '20': 5354512, '63': 5162657, '72': 4959819, '146': 4496517, '12': 4343842, '36': 4280471, '147': 4063379, '87': 3988939, '81': 3958320, '29': 3913884, '74': 3865711, '80': 3757834, '52': 3709798, '67': 3693175, '76': 3622252, '54': 3524886, '55': 3442631, '62': 3324397, 'J14': 3296029, '6': 3247574, '47': 3189908, '60': 3147656, '85': 3062225, '21': 3012997, '50': 2946840, '152': 2845095, '71': 2777530, '70': 2751467, '94': 2734488, '56': 2667350, '65': 2630921, '155': 2402608, '53A': 2376585, '78': 2370553, '15': 2301408, '75': 2230746, 'X9': 2075111, '92': 2022942, '91': 1981453, '28': 1946004, '156': 1769505, '49B': 1738749, '73': 1722672, '35': 1676931, '126': 1650208, 'X49': 1599849, '34': 1577427, '90': 1499521, '157': 1453911, '119': 1427918, '7': 1259619, '52A': 1257327, '18': 1197277, '84': 1148067, '111': 1131020, '115': 1114940, '54B': 1078172, '44': 1048516, '97': 993083, '30': 991019, '59': 959924, '8A': 958869, '93': 952404, '26': 920307, '2': 821724, '57': 809409, '135': 788497, '103': 765865, '95E': 754327, '134': 722110, '24': 710166, '112': 699697, '201': 631917, '86': 631746, '148': 605602, '95': 595069, '11': 542025, '39': 521164, '81W': 515183, '172': 490121, '43': 486500, '95W': 478787, '143': 471730, '136': 462031, '51': 449828, '1': 433894, '106': 432287, '63W': 416508, '88': 407710, '124': 399412, '68': 398683, '37': 386641, '125': 329836, '171': 328520, '108': 320834, '121': 303253, '62H': 289356, '48': 244532, '120': 230656, '205': 221009, '96': 220571, '192': 214717, '54A': 195610, '206': 194237, '100': 169637, '85A': 168648, '5': 162640, '55N': 160102, '10': 103532, '130': 87598, '55A': 81777, '1001': 64974, '111A': 64727, '132': 60191, '169': 51701, '31': 41746, '170': 33679, '19': 30659, '165': 29770, '128': 6988, 'X98': 3282, '154': 69, '999': 2, '992': 1})
+>>> totals_by_years['2016'].most_common(10)
+Traceback (most recent call last):
+  File "<pyshell#69>", line 1, in <module>
+    totals_by_years['2016'].most_common(10)
+NameError: name 'totals_by_years' is not defined
+>>> total_by_years['2016'].most_common(10)
+Traceback (most recent call last):
+  File "<pyshell#70>", line 1, in <module>
+    total_by_years['2016'].most_common(10)
+NameError: name 'total_by_years' is not defined
+>>> total_by_year['2016'].most_common(10)
+Traceback (most recent call last):
+  File "<pyshell#71>", line 1, in <module>
+    total_by_year['2016'].most_common(10)
+NameError: name 'total_by_year' is not defined
+>>> totals_by_year['2016'].most_common(10)
+[('79', 8268367), ('66', 7088030), ('77', 6671135), ('4', 6424587), ('8', 6375504), ('9', 6329587), ('53', 5895532), ('82', 5775101), ('3', 5698439), ('22', 5620134)]
+>>> diff = totals_by_year['2016'] - totals_by_year['2001']
+>>> diff.most_common(10)
+[('J14', 3296029), ('15', 2301408), ('X9', 2075111), ('146', 1516226), ('147', 1315199), ('115', 1114940), ('12', 1001598), ('26', 920307), ('134', 722110), ('18', 684923)]
+>>> 
+>>> 
+>>> 
+>>> a = 'Dave', 42
+>>> a
+('Dave', 42)
+>>> d = { }
+>>> d['Dave',42] = 23
+>>> d
+{('Dave', 42): 23}
+>>> d[('Dave',42)] = 23
+>>> d
+{('Dave', 42): 23}
+>>> 
+>>> a = 42
+>>> type(a)
+<class 'int'>
+>>> b = 4.2
+>>> type(b)
+<class 'float'>
+>>> id(a)
+1524672896
+>>> id(b)
+3070519482720
+>>> import sys
+>>> sys.getrefcount(b)
+2
+>>> b
+4.2
+>>> sys.getrefcount(b)
+3
+>>> b
+4.2
+>>> _
+4.2
+>>> a = [1,2,3]
+>>> b = a
+>>> b
+[1, 2, 3]
+>>> b.append(42)
+>>> b.append(999)
+>>> b
+[1, 2, 3, 42, 999]
+>>> a
+[1, 2, 3, 42, 999]
+>>> id(a)
+3070772207496
+>>> id(b)
+3070772207496
+>>> a = [1,2,3]
+>>> b = a
+>>> a
+[1, 2, 3]
+>>> b
+[1, 2, 3]
+>>> id(a)
+3070735243464
+>>> id(b)
+3070735243464
+>>> a = [4,5,6]
+>>> b   # ??? is it [4,5,6]
+[1, 2, 3]
+>>> a = open('ctabus.csv')
+>>> 
+>>> board = [ [0, 0, 0, 0, 0, 0, 0, 0],
+	      [0, 0, 0, 0, 0, 0, 0, 0],]
+>>> 
+>>> [0]*8
+[0, 0, 0, 0, 0, 0, 0, 0]
+>>> '-'*8
+'--------'
+>>> board = [ [0]*8 ] * 8
+>>> board
+[[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
+>>> from pprint import pprint
+>>> pprint(board)
+[[0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0, 0, 0, 0]]
+>>> board[2][3]
+0
+>>> board[3][4] = 1
+>>> board[5][6] = 2
+>>> pprint(board)
+[[0, 0, 0, 0, 1, 0, 2, 0],
+ [0, 0, 0, 0, 1, 0, 2, 0],
+ [0, 0, 0, 0, 1, 0, 2, 0],
+ [0, 0, 0, 0, 1, 0, 2, 0],
+ [0, 0, 0, 0, 1, 0, 2, 0],
+ [0, 0, 0, 0, 1, 0, 2, 0],
+ [0, 0, 0, 0, 1, 0, 2, 0],
+ [0, 0, 0, 0, 1, 0, 2, 0]]
+>>> [['x']]*8
+[['x'], ['x'], ['x'], ['x'], ['x'], ['x'], ['x'], ['x']]
+>>> a = _
+>>> a[0]
+['x']
+>>> a[0].append(y)
+Traceback (most recent call last):
+  File "<pyshell#133>", line 1, in <module>
+    a[0].append(y)
+NameError: name 'y' is not defined
+>>> a[0].append('y')
+>>> a
+[['x', 'y'], ['x', 'y'], ['x', 'y'], ['x', 'y'], ['x', 'y'], ['x', 'y'], ['x', 'y'], ['x', 'y']]
+>>> 
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 12100.[press enter]
+>>> 
+>>> rows[0]
+{'route': '3', 'date': '01/01/2001', 'daytype': 'U', 'ride': 7354}
+>>> a = 'route'
+>>> import sys
+>>> sys.getrefcount(a)
+736473
+>>> rows[0]
+{'route': '3', 'date': '01/01/2001', 'daytype': 'U', 'ride': 7354}
+>>> routes = set()
+>>> for row in rows:
+	routes.add(row['route'])
+
+	
+>>> len(routes)
+185
+>>> routeids = set()
+>>> for row in rows:
+	routeids.add(id(row['route']))
+
+	
+>>> len(routeids)
+690072
+>>> line = '3,01/01/2001,U,7354'
+>>> parts = line.split(',')
+>>> parts
+['3', '01/01/2001', 'U', '7354']
+>>> part2 = line.split(',')
+>>> parts
+['3', '01/01/2001', 'U', '7354']
+>>> parts2
+Traceback (most recent call last):
+  File "<pyshell#157>", line 1, in <module>
+    parts2
+NameError: name 'parts2' is not defined
+>>> part2
+['3', '01/01/2001', 'U', '7354']
+>>> parts
+['3', '01/01/2001', 'U', '7354']
+>>> id(part2[0])
+2672433758080
+>>> id(parts[0])
+2672433758080
+>>> line = '23,01/01/2001,U,7354'
+>>> parts3 = line.split(',')
+>>> parts4 = line.split(',')
+>>> parts3
+['23', '01/01/2001', 'U', '7354']
+>>> parts4
+['23', '01/01/2001', 'U', '7354']
+>>> id(parts3[0])
+2672473439232
+>>> id(parts4[0])
+2672473354112
+>>> a = 89
+>>> b = 89
+>>> id(a)
+1524674400
+>>> id(b)
+1524674400
+>>> a is b
+True
+>>> c = 300
+>>> d = 300
+>>> c is d
+False
+>>> parts
+['3', '01/01/2001', 'U', '7354']
+>>> part2
+['3', '01/01/2001', 'U', '7354']
+>>> id(parts[1])
+2672473323120
+>>> id(part2[1])
+2672473323056
+>>> id(parts[2])
+2672466535344
+>>> id(part2[2])
+2672466535344
+>>> 
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 5216.[press enter]
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 8280.[press enter]
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 11372.[press enter]
+
+>>> 
+>>> 
+>>> p = { 'x': 2, 'y': 3 }
+>>> import sys
+>>> sys.getsizeof(p)
+240
+>>> class Point(object):
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+		
+>>> q = Point(2,3)
+>>> q.__dict__
+{'x': 2, 'y': 3}
+>>> sys.getsizeof(q.__dict__)
+112
+>>> q
+<__main__.Point object at 0x000002175111DB38>
+>>> q.x
+2
+>>> q.y
+3
+>>> q.spam = 42
+>>> q.__dict__
+{'x': 2, 'y': 3, 'spam': 42}
+>>> sys.getsizeof(q.__dict__)
+112
+>>> class Point(object):
+	__slots__ = ('x', 'y')
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+		
+>>> p = Point(2,3)
+>>> p.x
+2
+>>> p.spam = 42
+Traceback (most recent call last):
+  File "<pyshell#206>", line 1, in <module>
+    p.spam = 42
+AttributeError: 'Point' object has no attribute 'spam'
+>>> p.__dict__
+Traceback (most recent call last):
+  File "<pyshell#207>", line 1, in <module>
+    p.__dict__
+AttributeError: 'Point' object has no attribute '__dict__'
+>>> 
+>>> def square(x):
+	return x*x
+
+>>> def recip(x):
+	return 1/x
+
+>>> square(10)
+100
+>>> recip(10)
+0.1
+>>> def sum_invsquare(start, stop):
+	total = 0
+	for n in range(start, stop+1):
+		total += recip(square(n))
+	return total
+
+>>> sum_invsquare(1,100)
+1.6349839001848923
+>>> def sum_terms(start, stop, term):
+	total = 0
+	for n in range(start, stop+1):
+		total += term(n)
+	return total
+
+>>> sum_terms(1,100, square)
+338350
+>>> sum_terms(1,100, recip)
+5.187377517639621
+>>> def invsquare(x):
+	return 1.0/(x*x)
+
+>>> sum_terms(1,100, invsquare)
+1.6349839001848923
+>>> def add(x, y):
+	return x + y
+
+>>> add(2,3)
+5
+>>> def compose(f, g):
+	def h(x):
+		return f(g(x))
+	return h
+
+>>> a = compose(square(recip))
+Traceback (most recent call last):
+  File "<pyshell#245>", line 1, in <module>
+    a = compose(square(recip))
+  File "<pyshell#211>", line 2, in square
+    return x*x
+TypeError: unsupported operand type(s) for *: 'function' and 'function'
+>>> a = compose(square, recip)
+>>> a
+<function compose.<locals>.h at 0x0000021751115F28>
+>>> a(4)
+0.0625
+>>> a(2)
+0.25
+>>> sum_terms(1,100,compose(square, recip))
+1.6349839001848923
+>>> data = [1,2,3,4,5,6,7]
+>>> def square(x):
+	return x * x
+
+>>> squared_data = []
+>>> for x in data:
+	squared_data.append(square(x))
+
+	
+>>> squared_data
+[1, 4, 9, 16, 25, 36, 49]
+>>> squared_data = [square(x) for x in data]
+>>> squared_data
+[1, 4, 9, 16, 25, 36, 49]
+>>> squared_data = [ x*x for x in data ]
+>>> squared_data
+[1, 4, 9, 16, 25, 36, 49]
+>>> data
+[1, 2, 3, 4, 5, 6, 7]
+>>> squares = [x*x for x in data]
+>>> squares
+[1, 4, 9, 16, 25, 36, 49]
+>>> data
+[1, 2, 3, 4, 5, 6, 7]
+>>> 
+>>> 
+>>> def f(x):
+	return 3*x + 2
+
+>>> x = 42
+>>> f(x)
+128
+>>> x
+42
+>>> def square(data):
+	for n, x in enumerate(data):
+		data[n] = x*x
+
+	
+>>> 
+>>> data
+[1, 2, 3, 4, 5, 6, 7]
+>>> square(data)
+>>> data
+[1, 4, 9, 16, 25, 36, 49]
+>>> def square(x):
+	return x*x
+
+>>> map(square, [1,2,3,4,5])
+<map object at 0x0000021758C588D0>
+>>> list(_)
+[1, 4, 9, 16, 25]
+>>> 
+========================== RESTART: Shell ==========================
+>>> import readrides
+>>> rows = readrides.read_as_instances('ctabus.csv')
+>>> len(rows)
+736461
+>>> 
+========================== RESTART: Shell ==========================
+>>> import readrides
+>>> rows = readrides.read_as_instances('ctabus.csv')
+>>> len(rows)
+736461
+>>> rows[0]
+Row(route='3', date='01/01/2001', day='U', rides=7354)
+>>> rows[1]
+Row(route='4', date='01/01/2001', day='U', rides=9288)
+>>> # Find all route 22 entries
+>>> rt22 = [ row for row in rows if row.route == '22']
+>>> len(rt22)
+5995
+>>> rt22[0]
+Row(route='22', date='01/01/2001', day='U', rides=7877)
+>>> rt22[1]
+Row(route='22', date='01/02/2001', day='W', rides=19558)
+>>> # Find all dates where more than 25000 people on rt22
+>>> dates = [row.date for row in rt22 if row.rides > 25000]
+>>> len(dates)
+63
+>>> dates[0]
+'03/06/2008'
+>>> dates[1]
+'03/13/2008'
+>>> dates = [row.date for row in rows if row.route=='22' and row.rides > 25000]
+>>> len(dates)
+63
+>>> # Set comprehension
+>>> # Unique routes
+>>> routes = { row.route for row in rows }
+>>> len(routes)
+185
+>>> # Mapping: route,date -> rides
+>>> rides_by_date = { (row.route, row.date):row.rides for row in rows }
+>>> # Dictionary comprehension
+>>> rides_by_date['22', '04/09/2011']
+20583
+>>> # Find the what route22 have highest ridership
+>>> max(rt22, key=lambda row: row.rides)
+Row(route='22', date='06/11/2008', day='W', rides=26896)
+>>> a = lambda  x: x + 10
+>>> a(20)
+30
+>>> nums = ['1','2','n/a','3','4']
+>>> nums
+['1', '2', 'n/a', '3', '4']
+>>> [ int(x) if x.isdigit() else None for x in nums]
+[1, 2, None, 3, 4]
+>>> for n in nums:
+	print(n)
+
+	
+1
+2
+n/a
+3
+4
+>>> 
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Traceback (most recent call last):
+  File "C:\Users\dave\Desktop\DataDeepDive\readrides.py", line 108, in <module>
+    cols = read_as_columns('ctabus.csv')
+  File "C:\Users\dave\Desktop\DataDeepDive\readrides.py", line 89, in read_as_columns
+    rows = cvs.reader(f)
+NameError: name 'cvs' is not defined
+>>> 
+===== RESTART: C:\Users\dave\Desktop\DataDeepDive\readrides.py =====
+Look at memory use of PID 2760.[press enter]
+>>> len(cols)
+4
+>>> cols['route'][:10]
+['3', '4', '6', '8', '9', '10', '11', '12', '18', '20']
+>>> cols['rides'][:10]
+[7354, 9288, 6048, 6309, 11207, 385, 610, 3678, 375, 7096]
+>>> 
+>>> import numpy
+>>> 
+>>> a = numpy.array([1,2,3,4,5,6,7,8])
+>>> a
+array([1, 2, 3, 4, 5, 6, 7, 8])
+>>> a + 10
+array([11, 12, 13, 14, 15, 16, 17, 18])
+>>> a / 10
+array([ 0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8])
+>>> numpy.sqrt(a)
+array([ 1.        ,  1.41421356,  1.73205081,  2.        ,  2.23606798,
+        2.44948974,  2.64575131,  2.82842712])
+>>> numpy.cos(a)
+array([ 0.54030231, -0.41614684, -0.9899925 , -0.65364362,  0.28366219,
+        0.96017029,  0.75390225, -0.14550003])
+>>> def f(x):
+	return 3*x*x + 7*x - 10
+
+>>> f(a)
+array([  0,  16,  38,  66, 100, 140, 186, 238])
+>>> a = numpy.arange(0, 1000, 0.001)
+>>> len(a)
+1000000
+>>> f(a)
+array([ -1.00000000e+01,  -9.99299700e+00,  -9.98598800e+00, ...,
+         3.00697198e+06,   3.00697799e+06,   3.00698399e+06])
+>>> a = numpy.arange(0, 10)
+>>> a
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+>>> b = a[2:7]
+>>> b
+array([2, 3, 4, 5, 6])
+>>> b[2] = 99999
+>>> b
+array([    2,     3, 99999,     5,     6])
+>>> a
+array([    0,     1,     2,     3, 99999,     5,     6,     7,     8,     9])
+>>> x = list(range(10))
+>>> x
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> y = x[2:7]
+>>> y
+[2, 3, 4, 5, 6]
+>>> y[2] = 99999
+>>> y
+[2, 3, 99999, 5, 6]
+>>> x
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> a
+array([    0,     1,     2,     3, 99999,     5,     6,     7,     8,     9])
+>>> a = numpy.array([1,8,2,5,10,14,98,13,5])
+>>> a + 10
+array([ 11,  18,  12,  15,  20,  24, 108,  23,  15])
+>>> a
+array([ 1,  8,  2,  5, 10, 14, 98, 13,  5])
+>>> # How do you do filtering?
+>>> # Pick all elements < 10
+>>> a < 10
+array([ True,  True,  True,  True, False, False, False, False,  True], dtype=bool)
+>>> a[a<10]
+array([1, 8, 2, 5, 5])
+>>> numpy.where(a<10, 10, a)
+array([10, 10, 10, 10, 10, 14, 98, 13, 10])
+>>> import pandas
+>>> port = pandas.read_csv('portfolio.csv')
+>>> port
+   name  shares  price
+0    AA     100  32.20
+1   IBM      50  91.10
+2   CAT     150  83.44
+3  MSFT     200  51.23
+4    GE      95  40.37
+5  MSFT      50  65.10
+6   IBM     100  70.44
+>>> port[0]
+Traceback (most recent call last):
+  File "C:\Users\dave\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\indexes\base.py", line 2134, in get_loc
+    return self._engine.get_loc(key)
+  File "pandas\index.pyx", line 132, in pandas.index.IndexEngine.get_loc (pandas\index.c:4433)
+  File "pandas\index.pyx", line 154, in pandas.index.IndexEngine.get_loc (pandas\index.c:4279)
+  File "pandas\src\hashtable_class_helper.pxi", line 732, in pandas.hashtable.PyObjectHashTable.get_item (pandas\hashtable.c:13742)
+  File "pandas\src\hashtable_class_helper.pxi", line 740, in pandas.hashtable.PyObjectHashTable.get_item (pandas\hashtable.c:13696)
+KeyError: 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<pyshell#374>", line 1, in <module>
+    port[0]
+  File "C:\Users\dave\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\core\frame.py", line 2059, in __getitem__
+    return self._getitem_column(key)
+  File "C:\Users\dave\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\core\frame.py", line 2066, in _getitem_column
+    return self._get_item_cache(key)
+  File "C:\Users\dave\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\core\generic.py", line 1386, in _get_item_cache
+    values = self._data.get(item)
+  File "C:\Users\dave\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\core\internals.py", line 3543, in get
+    loc = self.items.get_loc(item)
+  File "C:\Users\dave\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas\indexes\base.py", line 2136, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas\index.pyx", line 132, in pandas.index.IndexEngine.get_loc (pandas\index.c:4433)
+  File "pandas\index.pyx", line 154, in pandas.index.IndexEngine.get_loc (pandas\index.c:4279)
+  File "pandas\src\hashtable_class_helper.pxi", line 732, in pandas.hashtable.PyObjectHashTable.get_item (pandas\hashtable.c:13742)
+  File "pandas\src\hashtable_class_helper.pxi", line 740, in pandas.hashtable.PyObjectHashTable.get_item (pandas\hashtable.c:13696)
+KeyError: 0
+>>> port
+   name  shares  price
+0    AA     100  32.20
+1   IBM      50  91.10
+2   CAT     150  83.44
+3  MSFT     200  51.23
+4    GE      95  40.37
+5  MSFT      50  65.10
+6   IBM     100  70.44
+>>> port['name']
+0      AA
+1     IBM
+2     CAT
+3    MSFT
+4      GE
+5    MSFT
+6     IBM
+Name: name, dtype: object
+>>> port['shares']
+0    100
+1     50
+2    150
+3    200
+4     95
+5     50
+6    100
+Name: shares, dtype: int64
+>>> port = pandas.read_csv('portfolio.csv')
+>>> port
+   name  shares  price
+0    AA     100  32.20
+1   IBM      50  91.10
+2   CAT     150  83.44
+3  MSFT     200  51.23
+4    GE      95  40.37
+5  MSFT      50  65.10
+6   IBM     100  70.44
+>>> port['shares']
+0    100
+1     50
+2    150
+3    200
+4     95
+5     50
+6    100
+Name: shares, dtype: int64
+>>> port['price']
+0    32.20
+1    91.10
+2    83.44
+3    51.23
+4    40.37
+5    65.10
+6    70.44
+Name: price, dtype: float64
+>>> port['shares']*port['price']
+0     3220.00
+1     4555.00
+2    12516.00
+3    10246.00
+4     3835.15
+5     3255.00
+6     7044.00
+dtype: float64
+>>> port[port['shares'] > 100]
+   name  shares  price
+2   CAT     150  83.44
+3  MSFT     200  51.23
+>>> 
+>>> data = [1,2,3,4,5,6,7,8]
+>>> def square(x):
+	return x*x
+
+>>> map(square, data)
+<map object at 0x000001E550B7EB70>
+>>> result = map(square, data)
+>>> for n in result:
+	print(n)
+
+	
+1
+4
+9
+16
+25
+36
+49
+64
+>>> for n in result:
+	print(n)
+
+	
+>>> a = [1,2,3,4]
+>>> b = ['spam','blah','grok','bar']
+>>> z = zip(a,b)
+>>> z
+<zip object at 0x000001E550D20F48>
+>>> for n in z:
+	print(n)
+
+	
+(1, 'spam')
+(2, 'blah')
+(3, 'grok')
+(4, 'bar')
+>>> for n in z:
+	print(n)
+
+	
+>>> data
+[1, 2, 3, 4, 5, 6, 7, 8]
+>>> m = map(square, data)
+>>> m
+<map object at 0x000001E550B7EB70>
+>>> list(m)
+[1, 4, 9, 16, 25, 36, 49, 64]
+>>> def countdown(n):
+	print("Counting down from", n)
+	while n > 0:
+		yield n
+		n -= 1
+
+		
+>>> c = countdown(5)
+>>> c
+<generator object countdown at 0x000001E550AFA150>
+>>> for x in c:
+	print(x)
+
+	
+Counting down from 5
+5
+4
+3
+2
+1
+>>> for x in c:
+	print(x)
+
+	
+>>> # Sum : 1 to 100, 1/n**2
+>>> terms = range(1, 101)
+>>> terms
+range(1, 101)
+>>> def square(nums):
+	for x in nums:
+		yield x*x
+
+		
+>>> s= square(terms)
+>>> s
+<generator object square at 0x000001E550C49E60>
+>>> next(s)
+1
+>>> next(s)
+4
+>>> next(s)
+9
+>>> def recip(nums):
+	for x in nums:
+		yield 1/x
+
+		
+>>> r = recip(terms)
+>>> r
+<generator object recip at 0x000001E550D23990>
+>>> next(r)
+1.0
+>>> next(r)
+0.5
+>>> next(r)
+0.3333333333333333
+>>> terms
+range(1, 101)
+>>> squares = (x*x for x in terms)
+>>> recip = (1/x for x in squares)
+>>> squares
+<generator object <genexpr> at 0x000001E550D239E8>
+>>> recip
+<generator object <genexpr> at 0x000001E550D23938>
+>>> result = sum(recip)
+>>> result
+1.6349839001848923
+>>> 
+>>> 
+>>> 
+========================== RESTART: Shell ==========================
+>>> terms = range(1, 100000000)
+>>> def squares(nums):
+	for x in nums:
+		yield x*x
+
+		
+>>> def recip(nums):
+	for x in nums:
+		yield 1/x
+
+		
+>>> sum(squares(recip(terms)))
+1.644934057834575
+>>> terms
+range(1, 100000000)
+>>> squares = (x*x for x in terms)
+>>> recip = (1/x for x in squares)
+>>> squares
+<generator object <genexpr> at 0x000001A55A9537D8>
+>>> recip
+<generator object <genexpr> at 0x000001A55A953830>
+>>> next(recip)
+1.0
+>>> next(recip)
+0.25
+>>> f = open('ctabus.csv')
+>>> f
+<_io.TextIOWrapper name='ctabus.csv' mode='r' encoding='cp1252'>
+>>> import csv
+>>> next(f)
+'route,date,daytype,rides\n'
+>>> next(f)
+'3,01/01/2001,U,7354\n'
+>>> rows = csv.reader(f)
+>>> rows
+<_csv.reader object at 0x000001A55A933AD8>
+>>> next(rows)
+['4', '01/01/2001', 'U', '9288']
+>>> next(rows)
+['6', '01/01/2001', 'U', '6048']
+>>> rt22 = (row for row in rows if row[0] == '22')
+>>> rt22
+<generator object <genexpr> at 0x000001A55A953938>
+>>> next(rt22)
+['22', '01/01/2001', 'U', '7877']
+>>> next(rt22)
+['22', '01/02/2001', 'W', '19558']
+>>> next(rt22)
+['22', '01/03/2001', 'W', '19286']
+>>> next(rt22)
+['22', '01/04/2001', 'W', '20265']
+>>> rt22
+<generator object <genexpr> at 0x000001A55A953938>
+>>> # What date, rt22 have highest ridership?
+>>> max(rt22, key=lambda row: int(row[3]))
+['22', '06/11/2008', 'W', '26896']
+>>> 
